@@ -1,0 +1,18 @@
+body {
+    font-size: 18px;
+    font-family: sans-serif;
+
+    margin: 0;
+    padding: 0;
+}
+
+section {
+    color: red;
+}
+
+.translator-container {
+    height: 100%;
+    width: 100%;
+
+    color: red;
+}

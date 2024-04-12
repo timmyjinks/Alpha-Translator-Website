@@ -1,0 +1,15 @@
+{
+  "name": "alpha_translator_website",
+  "version": "1.0.0",
+  "description": "a translator to help older generation understand generation aplha",
+  "main": "app.js",
+  "scripts": {
+    "start": "node backend/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "timmyjinks",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
