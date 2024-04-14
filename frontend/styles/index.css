@@ -7,12 +7,20 @@ body {
 }
 
 section {
-    color: red;
+    display: flex;
+    align-items: center;
+    height: 100vh;
 }
 
 .translator-container {
-    height: 100%;
-    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: auto;
 
-    color: red;
+    width: 50%;
+}
+.translator-box input{
+   width: 100px;
+   height: 100px;
 }
