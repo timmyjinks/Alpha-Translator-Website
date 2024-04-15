@@ -1,14 +1,31 @@
 const express = require('express');
-const { MongoClient } = require('mongodb');
-const uri = "mongodb+srv://timmyjinks:Iamshort11@translations.htzswjn.mongodb.net/?retryWrites=true&w=majority&appName=translations";
 const app = express();
+const mongoose = require('mongoose');
+const Translation = require('../models/translation');
+
+const uri = "mongodb+srv://timmy:johnham@translations.nhzbbcc.mongodb.net/translations?retryWrites=true&w=majority&appName=translations";
 const port = 8080;
 
-app.listen(port);
-app.use(express.static('frontend'))
+mongoose.connect(uri)
+.then(async () => {  
+    console.log('database connected');
+    const translations = await Translation.find();
 
-app.get('/home', (req, res) => {
-    console.log("connected");
+    
+    
+    app.listen(port, (err) => {
+        if (!err) {
+            console.log(`ip address: 127.0.0.1:${port}`);
+        } else {
+            console.log(err);
+        }
+    });
 
-    res.sendFile('index.html', {root: 'frontend'});
-});
+    app.use(express.static('frontend'));
+    
+    app.get("/translations", (req, res) => {
+        res.send(translations);
+    });
+
+})
+.catch((err) => console.log("Error connecting to database: " + err));

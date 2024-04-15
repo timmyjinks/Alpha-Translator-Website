@@ -1,3 +1,4 @@
+let translations;
 let translator_box_label1 = document.querySelector('#translator-box-label1');
 let translator_box_label2 = document.querySelector('#translator-box-label2');
 let translate_box1 = document.querySelector('#translator-box1');
@@ -16,5 +17,30 @@ switchbtn.addEventListener('click', () => {
 
 
 translate_box1.addEventListener('change', () => {
-    // translate_box2.innerHTML = "oooof";
+    translate();
 });
+
+async function translate() {
+    translations = await getData();
+    console.log(translations);
+
+    let before = translate_box1.value.split(' ');
+    console.log(before);
+    for (let word = 0; word < before.length; word++) {
+        for(let translated = 0; translated < translations.length; translated++) {
+            if (before[word] == translations[translated].word) {
+                before[word] = translations[translated].translation;
+            }
+        }
+    }
+    let after = before.join(' ');
+    console.log(after);
+    translate_box2.value = after;
+    
+}
+
+async function getData() {
+    const response = await fetch('/translations');
+    return await response.json();
+
+} 

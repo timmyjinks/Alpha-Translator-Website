@@ -4,13 +4,17 @@
   "description": "a translator to help older generation understand generation aplha",
   "main": "app.js",
   "scripts": {
-    "start": "node backend/app.js",
+    "start": "nodemon backend/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "timmyjinks",
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2",
-    "mongodb": "^6.5.0"
+    "mongodb": "^6.5.0",
+    "mongoose": "^8.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
   }
 }
