@@ -22,20 +22,21 @@ translate_box1.addEventListener('input', () => {
 
 async function translate() {
     translations = await getData();
-    console.log(translations);
 
     let before = translate_box1.value.split(' ');
     console.log(before);
+
     for (let word = 0; word < before.length; word++) {
         for(let translated = 0; translated < translations.length; translated++) {
             if (before[word] == translations[translated].word) {
                 before[word] = translations[translated].translation;
             } else if (before[word] + " " + before[word + 1] == translations[translated].word) {
                 before[word] = translations[translated].translation;
-                before[word + 1] = "";
+                before.splice(word + 1, 1);
             }
         }
     }
+
     let after = before.join(' ');
     console.log(after);
     translate_box2.value = after;
