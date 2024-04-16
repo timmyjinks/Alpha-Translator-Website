@@ -16,7 +16,7 @@ switchbtn.addEventListener('click', () => {
 }); 
 
 
-translate_box1.addEventListener('change', () => {
+translate_box1.addEventListener('input', () => {
     translate();
 });
 
@@ -30,17 +30,19 @@ async function translate() {
         for(let translated = 0; translated < translations.length; translated++) {
             if (before[word] == translations[translated].word) {
                 before[word] = translations[translated].translation;
+            } else if (before[word] + " " + before[word + 1] == translations[translated].word) {
+                before[word] = translations[translated].translation;
+                before[word + 1] = "";
             }
         }
     }
     let after = before.join(' ');
     console.log(after);
     translate_box2.value = after;
-    
 }
 
 async function getData() {
     const response = await fetch('/translations');
     return await response.json();
-
-} 
+}
+ 
